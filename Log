@@ -1,0 +1,107 @@
+Changes
+
+
+
+Added methods to Node
+ -you can now get references to both input and output links for a node
+
+Added SigmaThreshold
+	-When created a Node use the FeedForwardNetwork.addNode(Threshold t, int layerIndex) method.
+	example addNode(new SigmaThreshold, 5) creates a Node that uses Sigma on layer 5
+	
+Added FeedForwardNetwork.linkLayers
+ -Read the comments
+ 
+Created FeedForwardNetworkTrainingLog and FeedForwardNetworkTrainingIteration
+	-works the same as the old log classes just more flexible, 
+
+Created FeedForwardNetworkTrainingMath
+	-contains utility methods used for back propagation, probably needs some tweaking
+
+Added FeedForwardNetwork.trainNetwork(TrainingDataPair dP) and trainLinkWeights(Node n, double error, int layerIndex, int nodeIndex)
+	-Trains network using FeedForwardNetworkTrainingMath methods ... also logs. Read Comments
+
+All Floats and floats are now Doubles and doubles.
+
+--
+PerceptronLogTableView logTable.getTableHeader().setReorderingAllowed(false);
+	-You can no longer reorder columns.
+
+Fixed a bug in FeedForwarNetwork.trainLinkWeights that might have caused a log offset issue. Every log row should match the length of the
+first row.
+
+Wrote FeedForwardTrainingLogTableModel.
+
+Wrote FeedForwardTrainingLogViewPanel.
+
+Fixed bug in FeedForwardNetwork.addLayer() - uses Vector.add(Object o) instead of Vector.add(int index, Object o) now.
+Fixed bug in FeedForwardNetwork.linkLayers() - was using the nodeCount from the same layer twice instead of the layer and layer below.
+
+TrainingDataViewPanel now generates a template TrainingDataSet if the FeedForwardNetwork dataSet is empty using 
+TrainingDataViewPanel.generateTemplateDataSet
+
+Wrote TrainingOptionPanel
+
+Package ann.graph is now ann.ui.graph since graph is ui components.
+
+Added FeedForwardNetworkGraphView.trainNetwork(int iterations, double errorThreshold) -sets the errorThreshold then iterates through the data set.
+
+Added FeedForwardNetworkGraphView.currentMaxError - is updated in FeedForwardNetworkGraphView.trainNetwork(TrainingDataPair dP)
+
+Finished TrainingOptionPanel - still need to add multithreading functionality so that iterations and error can be updated,
+also so progress can be show. 
+
+FeedForwardTrainingLogViewPanel now displays log data, however column names need to be fixed (TODO #5)
+
+--
+
+FeedForwardTrainingLog now uses node id as a key instead of node index and node layer index
+FeedForwardTrainingLog now uses input node index and output node index as link keys
+
+Added FeedForwardNodeIdTableView so you can now view nodes according to layer and id
+
+FeedForwardNetwork logging now works correctly.
+
+Changed trainNetwork(TrainingDataPair dP) to back propagate correctly. 
+
+Added bias to Node.
+
+Setting isActive to true in Node causes node to fire.
+
+Calling FeedForwardNetwork.linkLayers sets all Nodes bias to 1.
+
+Started FeedForwardNetworkTrainer.
+
+FeedForwardNetworkTrainer now stores the network the that is being trained.
+
+Removed TrainingDataSet.getDataPairs(). Added getDataPair(int index).
+
+Removed data set viewing/modifications and log functionality from FeedForwardNetworkGraphView and added it to FeedForwardTrainingOptionPanel
+
+FeedForwardNetwork no long stores a data set. Instead the data sets are stored in FeedForwardNetworkTrainer and FeedForwardTrainingFrame.
+
+FeedForwardNetworkTrainer is now threaded.
+
+Added live updating and stuff.
+
+Removed bias, instead using weighted Nodes.
+
+Fixed TrainingDataViewPanel so it does not generate input for WeightedNodes.
+
+Added bias again.
+
+Move the sigma function from the SigmaNode class to FeedForwardTrainingMath
+
+Mode TrainingDataViewPanel to FeedForwardNetworkGraphView, this class now handles all training data input.
+
+TrainingDataTableModel is now DataSetMode since all it does is display datasets. 
+If the boolean value isTrainingData is false then all the output columns are locked.
+
+TrainingDataTableModel now updates the training data set when you import a new data set. The only time the update button is need is if you manually
+edit the training data. The update button is now the "Apply Changes" button.
+
+TrainingDataPair and TrainingDataSet are now NetworkDataPair and NetworkDataSet. Package changed to ann.data to reflect this change.
+
+Randomized the order of training data pairs for each iteration of the training data set.
+
+Add momentum (see FeedForwardNetworkTrainer.trainLinkWeights)

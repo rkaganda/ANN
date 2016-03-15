@@ -1,0 +1,38 @@
+<learningset>
+<learningpair>
+	<inputs>
+		<value>1</value>
+		<value>0</value>
+		<value>0</value></inputs>
+	<outputs>
+		<value>1</value>
+	</outputs>
+</learningpair>
+<learningpair>
+	<inputs>
+		<value>1</value>
+		<value>1</value>
+		<value>0</value></inputs>
+	<outputs>
+		<value>1</value>
+	</outputs>
+</learningpair>
+<learningpair>
+	<inputs>
+		<value>1</value>
+		<value>0</value>
+		<value>1</value></inputs>
+	<outputs>
+		<value>1</value>
+	</outputs>
+</learningpair>
+<learningpair>
+	<inputs>
+		<value>1</value>
+		<value>1</value>
+		<value>1</value></inputs>
+	<outputs>
+		<value>0</value>
+	</outputs>
+</learningpair>
+</learningset>

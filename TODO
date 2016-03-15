@@ -1,0 +1,9 @@
+TODO
+	Create a normalize method that takes a min and max value, then applys it to a data set. The max value mapped to 1 and min value mapped to 0 all 
+	other values are mapped between.
+	
+	Created threaded class that runs input data sets through network.
+	
+	Clean up InputDataView and the Table model to make them thread safe.
+	
+	
